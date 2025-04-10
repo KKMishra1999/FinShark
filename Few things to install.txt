@@ -1,0 +1,8 @@
+Financial Modeling API - https://site.financialmodelingprep.com/
+
+--Install axios (For API Calls)
+npm install axios --save
+npm install --save-dev @types/axios
+
+--For storing API keys in env
+npm install dotenv --save
