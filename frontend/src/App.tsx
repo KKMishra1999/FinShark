@@ -5,6 +5,8 @@ import CardList from './Components/CardList/CardList'
 import Search from './Components/Search/Search'
 import { CompanySearch } from './company';
 import ListPortfolio from './Components/Portfolio/ListPortfolio/ListPortfolio';
+import Navbar from './Components/Navbar/Navbar';
+import Hero from './Hero/Hero';
 
 function App() {
   const [search, setSearch] = useState<string>("");
@@ -43,6 +45,8 @@ function App() {
 
   return (
     <>
+      <Navbar />
+      {/* <Hero /> */}
       <div>
         <Search search={search} onSearchChange={onSearchChange} onSearchSubmit={onSearchSubmit}/>
         {serverError ?? <h1>Failed to connect with API</h1>}

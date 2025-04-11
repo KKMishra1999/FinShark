@@ -7,10 +7,14 @@ interface Props {
 
 const DeletePortfolio: React.FC<Props> = (props: Props): JSX.Element => {
   return (
-    <form onSubmit={props.onPortfolioDelete}>
-        <input readOnly={true} hidden={true} value={props.portfolioValue}/>
-        <button type='submit'>X</button>
-    </form>
+    <div>
+        <form onSubmit={props.onPortfolioDelete}>
+            <input hidden={true} value={props.portfolioValue} />
+            <button className="block w-full py-3 text-white duration-200 border-2 rounded-lg bg-red-500 hover:text-red-500 hover:bg-white border-red-500">
+                X
+            </button>
+        </form>
+   </div>
   )
 }
 
