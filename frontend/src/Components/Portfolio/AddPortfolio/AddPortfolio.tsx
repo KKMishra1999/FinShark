@@ -12,7 +12,7 @@ const AddPortfolio: React.FC<Props> = (props: Props): JSX.Element=> {
             <input readOnly={true} hidden={true} value={props.symbol} />
             <button
                 type="submit"
-                className="p-2 px-8 text-white bg-blue-400 rounded-lg hover:opacity-70 focus:outline-none"
+                className="p-2 px-8 text-white bg-blue-400 rounded-lg hover:opacity-70 focus:outline-none cursor-pointer"
             >
                 Add
             </button>

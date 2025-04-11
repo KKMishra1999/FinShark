@@ -10,3 +10,10 @@ npm install dotenv --save
 --generating ids
 npm install uuid
 npm install --save-dev @types/uuid
+
+--react router
+npm install -save react-router
+npm install -save react-router-dom
+
+npm install --save @types/react-router-dom
+npm install --save @types/react-router
