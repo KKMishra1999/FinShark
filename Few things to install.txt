@@ -17,3 +17,6 @@ npm install -save react-router-dom
 
 npm install --save @types/react-router-dom
 npm install --save @types/react-router
+
+--rect icons
+npm install react-icons
