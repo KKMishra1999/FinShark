@@ -21,7 +21,7 @@ type Props = {}
 const Table = (props: Props) => {
   const renderRows = data.map((company) => {
     return (
-        <tr key={company.cik}>
+        <tr key={company.cik} className='odd:bg-gray-200 even:bg-gray-400'>
             {
                 configs.map((val: any) => {
                     return (
@@ -37,7 +37,7 @@ const Table = (props: Props) => {
 
   const renderHeaders = configs.map((val: any) => {
     return (
-        <th key={val.label} className='p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+        <th key={val.label} className='p-4 text-left text-xs font-medium text-gray-500 bg-blue-200 uppercase tracking-wider'>
             {val.label}
         </th>
     )
@@ -46,7 +46,7 @@ const Table = (props: Props) => {
   return (
     <div className='bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8'>
         <table>
-            <thead className='min-w-full divide-y divide-gray-200 m-5'>
+            <thead className='min-w-full divide-y divide-gray-400 m-5'>
                 {renderHeaders}
             </thead>
             <tbody>
