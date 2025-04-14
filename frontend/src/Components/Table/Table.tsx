@@ -1,31 +1,18 @@
-import React from 'react'
-import { testIncomeStatementData } from './TestData'
+import React, { JSX } from 'react'
 
-const data = testIncomeStatementData;
+interface Props {
+    config: any;
+    data: any;
+}
 
-type Company = (typeof data)[0];
-
-const configs = [
-    {
-        label: 'Year',
-        render: (company: Company) => company.acceptedDate
-    },
-    {
-        label: 'Cost of Revenue',
-        render: (company: Company) => company.costOfRevenue
-    }
-]
-
-type Props = {}
-
-const Table = (props: Props) => {
-  const renderRows = data.map((company) => {
+const Table: React.FC<Props> = (props: Props): JSX.Element => {
+  const renderRows = props.data.map((company: any) => {
     return (
         <tr key={company.cik} className='odd:bg-gray-200 even:bg-gray-400'>
             {
-                configs.map((val: any) => {
+                props.config.map((val: any) => {
                     return (
-                        <td className='p-4 whitespace-nowrap text-sm font-normal text-gray-900'>
+                        <td className='p-3 whitespace-nowrap text-sm font-normal text-gray-900'>
                             {val.render(company)}
                         </td>
                     );
@@ -35,7 +22,7 @@ const Table = (props: Props) => {
     );
   })
 
-  const renderHeaders = configs.map((val: any) => {
+  const renderHeaders = props.config.map((val: any) => {
     return (
         <th key={val.label} className='p-4 text-left text-xs font-medium text-gray-500 bg-blue-200 uppercase tracking-wider'>
             {val.label}

@@ -20,3 +20,6 @@ npm install --save @types/react-router
 
 --rect icons
 npm install react-icons
+
+--spinner
+npm install react-spinner

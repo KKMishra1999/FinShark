@@ -1,29 +1,14 @@
 import React, { JSX } from 'react'
-import { TestDataCompany } from '../Table/TestData'
 
-interface Props {}
-
-const data = TestDataCompany[0];
-
-type Company = typeof data;
-
-const config = [
-    {
-        label: "Company Name",
-        render: (company: Company) => company.companyName,
-        subTitle: "This is the company name"
-    },
-    {
-        label: "CEO Name",
-        render: (company: Company) => company.ceo,
-        subTitle: "Company CEO Name"
-    },
-] 
+interface Props {
+    config: any;
+    data: any;
+}
 
 const RatioList: React.FC<Props> = (props: Props): JSX.Element => {
-    const renderRows = config.map((row) => {
+    const renderRows = props.config.map((row: any) => {
         return (
-            <li className="py-3 sm:py-4">
+            <li className="py-3 sm:py-4" key={row.label}>
                 <div className="flex item-center space-x-4">
                     <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-900 truncate">
@@ -34,7 +19,7 @@ const RatioList: React.FC<Props> = (props: Props): JSX.Element => {
                         </p>
                     </div>
                     <div className="inline-flex items-center text-base font-semibold text-gray-900">
-                        {row.render(data)}
+                        {row.render(props.data)}
                     </div>
                 </div>
             </li>
@@ -42,7 +27,7 @@ const RatioList: React.FC<Props> = (props: Props): JSX.Element => {
     })
 
   return (
-    <div className='bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full'>
+    <div className='bg-white shadow rounded-lg ml-4 mt-4 mb-4 p-4 sm:p-6 h-full'>
         <ul className="divide-y divide-gray-300">{renderRows}</ul>
     </div>
   )
