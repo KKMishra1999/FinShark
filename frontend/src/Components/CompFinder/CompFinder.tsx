@@ -13,7 +13,7 @@ const CompFinder: React.FC<Props> = (props: Props): JSX.Element => {
     useEffect(() => {
         const getComps = async() => {
             const value = await getCompData(props.ticker);
-            if(typeof(value) === 'string'){}
+            if(typeof(value) === 'string'){ /* empty */ }
             else if(Array.isArray(value.data)){
                 setCompanyData(value?.data[0]);
             }

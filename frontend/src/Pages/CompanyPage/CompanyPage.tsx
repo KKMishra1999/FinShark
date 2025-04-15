@@ -1,5 +1,4 @@
 import React, { JSX, useEffect, useState } from 'react'
-import { Outlet, useParams } from 'react-router'
 import { getCompanyProfile } from '../../api';
 import { CompanyProfile } from '../../company';
 import Sidebar from '../../Components/Sidebar/Sidebar';
@@ -8,11 +7,12 @@ import Tile from '../../Components/Tile/Tile';
 import CompFinder from '../../Components/CompFinder/CompFinder';
 import TenKFinder from '../../Components/TenkFinder/TenKFinder';
 import { formatLargeMonetaryNumber } from '../../Helpers/NumberFormatting';
+import { useParams } from 'react-router';
 
 interface Props { }
 
 const CompanyPage: React.FC<Props> = (props: Props): JSX.Element => {
-  let { ticker } = useParams();
+  const { ticker } = useParams();
   const [company, setCompany] = useState<CompanyProfile>();
   const [warning, setWarning] = useState<string>('');
 
