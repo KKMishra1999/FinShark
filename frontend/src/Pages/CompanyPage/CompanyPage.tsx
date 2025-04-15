@@ -7,6 +7,7 @@ import CompanyDashboard from '../../Components/CompanyDashboard/CompanyDashboard
 import Tile from '../../Components/Tile/Tile';
 import CompFinder from '../../Components/CompFinder/CompFinder';
 import TenKFinder from '../../Components/TenkFinder/TenKFinder';
+import { formatLargeMonetaryNumber } from '../../Helpers/NumberFormatting';
 
 interface Props { }
 
@@ -40,9 +41,9 @@ const CompanyPage: React.FC<Props> = (props: Props): JSX.Element => {
                 <Sidebar />
                 <CompanyDashboard ticker={ticker!}>
                   <Tile title='Company Name' subTitle={company.companyName}/>
-                  <Tile title='Price' subTitle={company.price.toString()}/>
+                  <Tile title='Price' subTitle={`$${company.price.toString()}`}/>
                   <Tile title='Sector' subTitle={company.sector}/>
-                  <Tile title='Market Cap' subTitle={company.mktCap.toString()}/>
+                  <Tile title='Market Cap' subTitle={formatLargeMonetaryNumber(company.mktCap).toString()}/>
                   <CompFinder ticker={company.symbol} />
                   <TenKFinder ticker={company.symbol} />
                   <p className='bg-white shadow rounded text-medium text-gray-900 p-3 mt-1 m-4'>
