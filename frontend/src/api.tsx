@@ -1,5 +1,5 @@
 import axios from "axios"
-import { CompanyBalanceSheet, CompanyCashFlow, CompanyIncomeStatement, CompanyKeyMetrics, CompanyProfile, CompanySearch } from "./company";
+import { CompanyBalanceSheet, CompanyCashFlow, CompanyCompData, CompanyIncomeStatement, CompanyKeyMetrics, CompanyProfile, CompanySearch } from "./company";
 
 interface SearchResponse{
     data: CompanySearch[];
@@ -102,6 +102,26 @@ export const getCashFlowStatement = async(query: string) => {
     try{
         const data = await axios.get<CompanyCashFlow[]>(
             `https://financialmodelingprep.com/api/v3/cash-flow-statement/${query}?apikey=${import.meta.env.VITE_API_KEY}`
+        ); 
+        return data;
+    }catch (error) {
+        if(axios.isAxiosError(error)){
+         console.log("Error message: ", error.message);
+         return error.message;
+        }
+        else{
+         console.log("Unexpected error: ", error);
+         return "An unexpected error occured";
+        }
+    }
+}
+
+
+//This endpoint is paid
+export const getCompData = async(query: string) => {
+    try{
+        const data = await axios.get<CompanyCompData[]>(
+            `https://financialmodelingprep.com/api/v4/stock_peers?symbol=${query}L&apikey=${import.meta.env.VITE_API_KEY}`
         ); 
         return data;
     }catch (error) {
