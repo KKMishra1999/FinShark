@@ -1,4 +1,5 @@
 import React, { JSX } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 
 interface Props {
     config: any;
@@ -8,7 +9,7 @@ interface Props {
 const RatioList: React.FC<Props> = (props: Props): JSX.Element => {
     const renderRows = props.config.map((row: any) => {
         return (
-            <li className="py-3 sm:py-4" key={row.label}>
+            <li className="py-3 sm:py-4" key={uuidv4()}>
                 <div className="flex item-center space-x-4">
                     <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-900 truncate">

@@ -1,6 +1,8 @@
 import React, { JSX } from 'react'
+import { BsCashCoin } from 'react-icons/bs'
 import { FaHome } from 'react-icons/fa'
 import { FaNewspaper } from "react-icons/fa6"
+import { LuSheet } from 'react-icons/lu'
 import { Link } from 'react-router-dom'
 
 interface Props {}
@@ -21,6 +23,14 @@ const Sidebar: React.FC<Props> = (props: Props): JSX.Element => {
                     <Link to='income-statement' className='md:min-w-full text-gray-500 text-medium uppercase font-bold flex pt-1 pb-4 no-underline'>
                         <FaNewspaper />
                         <h6 className='ml-3'>Income Statement</h6>
+                    </Link>
+                    <Link to='balance-sheet' className='md:min-w-full text-gray-500 text-medium uppercase font-bold flex pt-1 pb-4 no-underline'>
+                        <LuSheet />
+                        <h6 className='ml-3'>Balance Sheet</h6>
+                    </Link>
+                    <Link to='cashflow-statement' className='md:min-w-full text-gray-500 text-medium uppercase font-bold flex pt-1 pb-4 no-underline'>
+                        <BsCashCoin />
+                        <h6 className='ml-3'>Cashflow Statement</h6>
                     </Link>
                 </div>
             </div>

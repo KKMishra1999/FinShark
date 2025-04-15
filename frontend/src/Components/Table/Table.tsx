@@ -8,7 +8,7 @@ interface Props {
 const Table: React.FC<Props> = (props: Props): JSX.Element => {
   const renderRows = props.data.map((company: any) => {
     return (
-        <tr key={company.cik} className='odd:bg-gray-200 even:bg-gray-400'>
+        <tr key={company.cik} className='odd:bg-gray-200 even:bg-gray-300'>
             {
                 props.config.map((val: any) => {
                     return (
@@ -24,14 +24,14 @@ const Table: React.FC<Props> = (props: Props): JSX.Element => {
 
   const renderHeaders = props.config.map((val: any) => {
     return (
-        <th key={val.label} className='p-4 text-left text-xs font-medium text-gray-500 bg-blue-200 uppercase tracking-wider'>
+        <th key={val.label} className='p-4 text-left text-xs font-medium text-gray-500 bg-blue-100 uppercase tracking-wider'>
             {val.label}
         </th>
     )
   })
 
   return (
-    <div className='bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8'>
+    <div className='bg-white shadow rounded-lg ml-4 mt-3 p-4 sm:p-6 xl:p-8'>
         <table>
             <thead className='min-w-full divide-y divide-gray-400 m-5'>
                 {renderHeaders}

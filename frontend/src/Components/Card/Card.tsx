@@ -17,7 +17,7 @@ const Card : React.FC<Props> = (props: Props) : JSX.Element => {
       key={props.id}
       id={props.id}
     >
-        <Link to={`/company/${props.company.symbol}`} className="font-bold text-center text-black md:text-left">
+        <Link to={`/company/${props.company.symbol}/company-profile`} className="font-bold text-center text-black md:text-left">
           {props.company.name} ({props.company.symbol})
         </Link>
         <p className="text-black">{props.company.currency}</p>
