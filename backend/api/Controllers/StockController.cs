@@ -64,5 +64,22 @@ namespace api.Controllers
             return Ok(stockModel.ToStockDto());
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+        {
+            var stockModel = await _context.Stocks.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (stockModel == null)
+            {
+                return NotFound();
+            }
+
+            _context.Stocks.Remove(stockModel);
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
     }
 }
