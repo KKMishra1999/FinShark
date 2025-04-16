@@ -21,6 +21,22 @@
   },
   {
     "ContainingType": "api.Controllers.StockController",
+    "Method": "Create",
+    "RelativePath": "api/stocks",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "stockDto",
+        "Type": "api.Dtos.Stock.CreateStockRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "api.Controllers.StockController",
     "Method": "GetById",
     "RelativePath": "api/stocks/{id}",
     "HttpMethod": "GET",
@@ -35,6 +51,37 @@
       {
         "Name": "id",
         "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "api.Dtos.Stock.StockDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "api.Controllers.StockController",
+    "Method": "Update",
+    "RelativePath": "api/stocks/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateDto",
+        "Type": "api.Dtos.Stock.UpdateStockRequestDto",
         "IsRequired": true
       }
     ],
