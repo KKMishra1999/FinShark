@@ -1,5 +1,6 @@
 ﻿using api.Data;
 using api.Dtos.Stock;
+using api.Helpers;
 using api.Interfaces;
 using api.Models;
 using Microsoft.EntityFrameworkCore;
@@ -29,16 +30,36 @@ namespace api.Repository
             return stockModel;
         }
 
-        public async Task<List<Stock>> GetAllAsync()
+        public async Task<List<Stock>> GetAllAsync(QueryObject query)
         {
-            return await _context.Stocks.ToListAsync();
+            var stocks =  _context.Stocks.Include(s => s.Comments).AsQueryable();
+            stocks = stocks.Skip((query.PageNumber - 1) * query.PageSize).Take(query.PageSize);
+            stocks = !string.IsNullOrEmpty(query.Symbol) ? stocks.Where(s => s.Symbol.ToLower().Contains(query.Symbol.ToLower())) : stocks;
+            stocks = !string.IsNullOrEmpty(query.CompanyName) ? stocks.Where(s => s.CompanyName.ToLower().Contains(query.CompanyName.ToLower())) : stocks;
+            if (!string.IsNullOrEmpty(query.Symbol))
+            {
+                if(query.Symbol.Equals("Symbol", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = query.IsDescending ? stocks.OrderByDescending(s => s.Symbol) : stocks.OrderBy(s => s.Symbol);
+                }
+                else if (query.Symbol.Equals("CompanyName", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = query.IsDescending ? stocks.OrderByDescending(s => s.CompanyName) : stocks.OrderBy(s => s.CompanyName);
+                }
+            }
+            return await stocks.ToListAsync();
         }
 
         public async Task<Stock?> GetByIdAsync(int id)
         {
-            var stock = await _context.Stocks.FindAsync(id);
+            var stock = await _context.Stocks.Include(s => s.Comments).FirstOrDefaultAsync(s => s.Id == id);
 
             return stock;
+        }
+
+        public async Task<bool> IsExists(int id)
+        {
+            return await _context.Stocks.AnyAsync(s => s.Id == id);
         }
 
         public async Task<Stock?> UpdateAsync(int id, UpdateStockRequestDto updateDto)
